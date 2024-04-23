@@ -61,7 +61,18 @@ def convStrToList(df, column):
 
 
 def unPickelData(df):
-    print(os.getcwd())
+    import os
+    # Get the current working directory
+    current_directory = os.getcwd()
+    print("Current working directory:", current_directory)
+    
+    # Check if the file exists
+    file_path = os.path.join(current_directory, 'seoDes.pkl')
+    if os.path.exists(file_path):
+        print("File exists at path:", file_path)
+    else:
+        print("File does not exist at path:", file_path)
+
     import pickle
     with open('seoDes.pkl', 'rb') as f:
         seoPickeler = pickle.load(f)
