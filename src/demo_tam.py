@@ -4,6 +4,7 @@ import pandas as pd
 # import seaborn as sns
 from sklearn.feature_extraction.text import CountVectorizer
 import nltk
+nltk.download('punkt')
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
