@@ -61,6 +61,7 @@ def convStrToList(df, column):
 
 
 def unPickelData(df):
+    print(os.getcwd())
     import pickle
     with open('seoDes.pkl', 'rb') as f:
         seoPickeler = pickle.load(f)
