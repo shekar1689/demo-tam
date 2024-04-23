@@ -10,7 +10,7 @@ from nltk.stem import WordNetLemmatizer
 import string
 import contractions
 from num2words import num2words
-from gensim.models import Word2Vec
+# from gensim.models import Word2Vec
 import re
 import pickle
 
