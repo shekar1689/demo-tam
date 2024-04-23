@@ -38,11 +38,11 @@ def preProcessText(df, column):
     return df[column]
 
 def dropUnwantedTechsAndKeys(df):
-    with open('unWantedTechs.pkl', 'rb') as f:
+    with open('src/unWantedTechs.pkl', 'rb') as f:
         unwantedTechs = pickle.load(f)
     df = df.drop(unwantedTechs, axis = 1)
     
-    with open('unwantedKeywords.pkl', 'rb') as f:
+    with open('src/unwantedKeywords.pkl', 'rb') as f:
         unwantedKeywords = pickle.load(f)
     df = df.drop(unwantedKeywords, axis = 1)
     
@@ -72,7 +72,7 @@ def unPickelData(df):
     seoDummies.reset_index(drop=True, inplace=True)
 
     # Industries
-    with open('industry.pkl', 'rb') as f:
+    with open('src/industry.pkl', 'rb') as f:
         industryPickeler = pickle.load(f)
         
     df['Industry'] = df['Industry'].fillna('')
@@ -82,7 +82,7 @@ def unPickelData(df):
     industryDummies.reset_index(drop=True, inplace=True)
 
     # Technologies
-    with open('technology.pkl', 'rb') as f:
+    with open('src/technology.pkl', 'rb') as f:
         techPickler = pickle.load(f)
     
     df['Technologies'] = df['Technologies'].fillna('')
@@ -92,7 +92,7 @@ def unPickelData(df):
     techDummies.reset_index(drop=True, inplace=True)
 
    # Keywords
-    with open('keyword.pkl', 'rb') as f:
+    with open('src/keyword.pkl', 'rb') as f:
         keywordPickler = pickle.load(f)
         
     df['Keywords'] = df['Keywords'].fillna('')
@@ -135,7 +135,7 @@ def testModel(test):
     test = dropDuplicateColumns(test)
     test = dropUnwantedTechsAndKeys(test)
     
-    with open('model.pkl', 'rb') as f:
+    with open('src/model.pkl', 'rb') as f:
         loadedModel = pickle.load(f)
         
     test['output'] = loadedModel.predict(test)
