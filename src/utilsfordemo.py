@@ -50,6 +50,7 @@ def dropUnwantedTechsAndKeys(df):
 
 def convStrToList(df, column):
     df[column] = df[column].fillna('')
+    df[column] = df[column].astype(str)
     df[column] = df[column].str.split(',')
     df[column] = [[col.strip() for col in sublist] for sublist in df[column]]
     
