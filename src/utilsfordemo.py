@@ -138,8 +138,11 @@ def testModel(test):
     
     with open('src/model.pkl', 'rb') as f:
         loadedModel = pickle.load(f)
-        
-    test['output'] = loadedModel.predict(test)
-    test_bckp['ICP'] = test['output'].apply(lambda x: 'ICP' if x == 1 else 'Not an ICP')
 
+    test['output'] = loadedModel.predict(test)
+    probabilities_icp = loadedModel.predict_proba(test)[:, 1]
+    probabilities_noticp = loadedModel.predict_proba(test)[:, 0]
+    test_bckp['ICP'] = test['output'].apply(lambda x: 'ICP' if x == 1 else 'Not an ICP')
+    test_bckp['prob_icp'] = probabilities_icp
+    test_bckp['prob_n_icp'] = probabilities_noticp
     return test_bckp
